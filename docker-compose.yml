@@ -2,7 +2,17 @@ version: '3'
 
 services:
   # logger:
-  #   build: ./logs
+  #   build: ./logger
+  #   restart: always
+  #   ports:
+  #     - 3001:3001
+  #   depends_on:
+  #     - broker
+  #   networks:
+  #     - desafio-network
+
+  # users:
+  #   build: ./accounts-auth
   #   restart: always
   #   ports:
   #     - 3000:3000

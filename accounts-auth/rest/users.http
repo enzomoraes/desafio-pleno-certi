@@ -1,0 +1,10 @@
+GET http://localhost:3000/users?orderDirection=-1
+
+###
+GET http://localhost:3000/users/642b4f54b2f0cdb5a396ab68
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{ "login": "enzo", "name": "enzo", "timestamp": 1680214160643 }

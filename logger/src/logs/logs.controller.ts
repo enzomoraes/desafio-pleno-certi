@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   OnModuleInit,
@@ -42,7 +43,7 @@ export class LogsController implements OnModuleInit {
 
   @Post('/logs')
   @UsePipes(CreateLogValidatorPipe)
-  async create(@Payload() createLogDto: CreateLogDto) {
+  async create(@Body() createLogDto: CreateLogDto) {
     try {
       this.kafkaClient.send('logs.create', createLogDto).subscribe();
       return { message: 'published message' };

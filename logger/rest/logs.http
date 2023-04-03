@@ -1,10 +1,10 @@
-GET http://localhost:3000/logs?orderDirection=-1
+GET http://localhost:3001/logs?orderDirection=-1
 
 ###
-GET http://localhost:3000/logs/64262dba422e0a6595848fd1
+GET http://localhost:3001/logs/64262dba422e0a6595848fd1
 
 ###
-POST http://localhost:3000/logs
+POST http://localhost:3001/logs
 Content-Type: application/json
 
 { "action": "create", "payload": {"login": "aaa", "password": "aaaa"}, "timestamp": 1680214160643 }

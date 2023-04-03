@@ -1,0 +1,5 @@
+export const CREATE = '[CREATE]'
+export const FIND_ONE = '[FIND ONE]'
+export const FIND_ALL = '[FIND ALL]'
+export const UPDATE = '[UPDATE]'
+export const REMOVE = '[REMOVE]'
