@@ -11,6 +11,8 @@ Este microserviço tem como objetivo gerenciar logs não estruturados de aplica�
 - Testes unitários de serviços com banco de dados real
 - Testes unitários de validação de DTOs
 
+![Suite de testes](./assets/test-suit.png)
+
 ### Como executar os testes
 
 Para executar os testes, siga os seguintes passos:
