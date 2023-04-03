@@ -4,7 +4,7 @@
 /database
 
 # Logs
-logs
+!logger/logs
 *.log
 npm-debug.log*
 pnpm-debug.log*
