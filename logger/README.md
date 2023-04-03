@@ -4,7 +4,7 @@
 
 ## Visão Geral
 
-Este microserviço tem como objetivo gerenciar logs não estruturados de aplicações distribuídas em uma topologia de microserviços. Ele se conecta ao Broker do Kafka para inserir os logs no banco de dados MongoDB assim que as mensagens chegam no tópico logs.create. Utiliza o banco de dados MongoDB devido à sua natureza não relacional, que é mais eficiente para armazenar dados não estruturados.
+> Este microserviço tem como objetivo gerenciar logs não estruturados de aplicações distribuídas em uma topologia de microserviços. Ele se conecta ao Broker do Kafka para inserir os logs no banco de dados MongoDB assim que as mensagens chegam no tópico logs.create. Utiliza o banco de dados MongoDB devido à sua natureza não relacional, que é mais eficiente para armazenar dados não estruturados.
 
 ### Este microsserviço possui
 
