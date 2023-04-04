@@ -19,6 +19,8 @@ WORKDIR /var/www
 
 RUN apk add --update nodejs npm
 
+COPY .env.container .env.container
+
 COPY package*.json ./
 
 RUN npm ci --silent
