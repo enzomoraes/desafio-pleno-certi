@@ -1,0 +1,23 @@
+<form class="form" [formGroup]="form">
+  <h1>User {{action}}</h1>
+  <mat-form-field class="input" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput formControlName="nameControl">
+    <mat-error *ngIf="form.controls['nameControl'].dirty && form.controls['nameControl'].hasError('required')">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input" appearance="fill">
+    <mat-label>Login</mat-label>
+    <input type="text" matInput formControlName="loginControl">
+    <mat-error *ngIf="form.controls['loginControl'].dirty && form.controls['loginControl'].hasError('required')">
+      Login is required
+    </mat-error>
+    <mat-error *ngIf="form.controls['loginControl'].hasError('alreadyTaken')">
+      {{form.controls["loginControl"].errors?.["alreadyTaken"] }}
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">Save</button>
+</form>

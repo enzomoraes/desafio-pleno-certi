@@ -1,0 +1,5 @@
+<div *ngIf="currentUser" class="user-card">
+  <h1>Name: {{currentUser.name}}</h1>
+  <h3>Login: {{currentUser.login}}</h3>
+  <h5>Updated at: {{currentUser.timestamp | date: 'medium':'UTC -3'}}</h5>
+</div>

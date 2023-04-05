@@ -1,0 +1,14 @@
+.wrapper {
+  width: auto;
+  height: auto;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 24px;
+
+  padding-bottom: 32px;
+}

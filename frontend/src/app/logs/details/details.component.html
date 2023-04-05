@@ -1,0 +1,5 @@
+<div *ngIf="currentLog" class="logs-card">
+  <h1>Action: {{currentLog.action}}</h1>
+  <p>Payload: {{currentLog.payload | json}}</p>
+  <h5>Updated at: {{currentLog.timestamp | date: 'medium':'UTC -3'}}</h5>
+</div>

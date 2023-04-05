@@ -1,0 +1,33 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  height: 10vh;
+
+  background-color: #fff;
+
+  li {
+    list-style: none;
+
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      font-size: 2rem;
+      padding: 0;
+      margin: 0;
+      &:hover {
+        cursor: pointer;
+      }
+
+      & .mat-icon {
+        width: auto;
+        font-size: 2rem;
+      }
+    }
+  }
+}

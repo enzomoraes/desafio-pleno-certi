@@ -1,0 +1,14 @@
+.form {
+  width: 75vw;
+  height: 35vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  width: 350px
+}
