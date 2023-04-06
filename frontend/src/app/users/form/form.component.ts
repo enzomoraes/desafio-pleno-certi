@@ -20,6 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 export class FormComponent implements OnInit, OnDestroy {
   private terminator$: Subject<boolean> = new Subject();
   public action: string;
+  public currentUserId: string;
 
   public form: FormGroup;
   constructor(
@@ -45,6 +46,7 @@ export class FormComponent implements OnInit, OnDestroy {
     });
 
     this.action = this.route.snapshot.queryParams.create ? 'Create' : 'Update';
+    this.currentUserId = this.route.snapshot.queryParams['id'];
 
     if (this.action === 'Update') {
       this.usersService
@@ -97,7 +99,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
   private update(data: UserCreate): void {
     this.usersService
-      .update(data)
+      .update(this.currentUserId, data)
       .pipe(takeUntil(this.terminator$))
       .subscribe({
         next: () => {

@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - desafio-network
+
   logger:
     build: ./logger
     restart: always

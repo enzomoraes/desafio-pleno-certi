@@ -46,7 +46,7 @@ export class UsersService {
    * @param userCreate  object dto
    * @returns UserModel
    */
-  update(userCreate: UserCreate): Observable<UserModel> {
-    return this.http.put<UserModel>(`${this.host}${this.route}`, userCreate);
+  update(id: string, userCreate: UserCreate): Observable<UserModel> {
+    return this.http.patch<UserModel>(`${this.host}${this.route}/${id}`, userCreate);
   }
 }
