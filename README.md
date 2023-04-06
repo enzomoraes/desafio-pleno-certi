@@ -65,6 +65,7 @@ Veja uma descrição mais detalhada no `README.md` de cada aplicação.
 `Broker`
 
 - Port: 9092
-- Kafka Topic logs.create Configuration:
-  - Name: logs.create
-  - Partitions: 2
+- Kafka Topic logs.create 
+  - Configuration:
+    - Name: logs.create
+    - Partitions: 2
