@@ -26,7 +26,7 @@ Este projeto tem como objetivo gerenciar usuários da aplicação e gerar logs n
 
 Veja uma descrição mais detalhada no `README.md` de cada aplicação.
 
-## Configuration
+## Configuração
 
 `Frontend`
 
