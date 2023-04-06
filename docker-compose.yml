@@ -9,17 +9,27 @@ services:
     networks:
       - desafio-network
 
-  logger:
+  logger1:
     build: ./logger
     restart: always
     ports:
-      - 3001:3001
+      - 3002:3002
     depends_on:
       - broker
     networks:
       - desafio-network
 
-  users:
+  logger2:
+    build: ./logger
+    restart: always
+    ports:
+      - 3003:3002
+    depends_on:
+      - broker
+    networks:
+      - desafio-network
+
+  users1:
     build: ./accounts-auth
     restart: always
     ports:
@@ -29,10 +39,20 @@ services:
     networks:
       - desafio-network
 
+  users2:
+    build: ./accounts-auth
+    restart: always
+    ports:
+      - 3001:3000
+    depends_on:
+      - broker
+    networks:
+      - desafio-network
+
   mongo:
     image: mongo
     restart: on-failure
-    env_file: ./mongo.env
+    env_file: ./envs/mongo.env
     ports:
       - '27017:27017'
     volumes:
@@ -64,6 +84,65 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - desafio-network
+
+  kong-pgsql:
+    container_name: kong_pgsql
+    restart: unless-stopped
+    image: postgres:14-alpine
+    volumes:
+      - ./kong/db-kong/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    networks:
+      - desafio-network
+    ports:
+      - '15432:5432'
+    env_file:
+      - ./envs/.env.pgsql-kong
+
+      ##############################kong#####################################
+
+  kong:
+    container_name: kong_cont
+    build: ./kong
+    restart: always
+    depends_on:
+      - kong-pgsql
+    networks:
+      - desafio-network
+    ports:
+      - '8000:8000' # Listener
+      - '8001:8001' # Admin API
+      - '8443:8443' # Listener  (SSL)
+      - '8444:8444' # Admin API (SSL)
+    env_file:
+      - ./envs/.env.kong
+
+  ##############################konga#####################################
+
+  konga-pgsql:
+    container_name: konga_pgsql
+    restart: unless-stopped
+    image: postgres:9.6
+    volumes:
+      - ./kong/db-konga/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    networks:
+      - desafio-network
+    ports:
+      - '15433:5432'
+    env_file:
+      - ./envs/.env.pgsql-konga
+
+  konga:
+    container_name: konga_cont
+    restart: always
+    image: pantsel/konga:0.14.9
+    depends_on:
+      - konga-pgsql
+    networks:
+      - desafio-network
+    ports:
+      - '1337:1337'
+    env_file:
+      - ./envs/.env.konga
 
 networks:
   desafio-network:

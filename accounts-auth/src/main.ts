@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { microserviceConfig } from './microserviceConfig';
+import { config } from 'dotenv';
+config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -9,6 +11,6 @@ async function bootstrap() {
   app.enableCors({origin: '*'})
 
   await app.startAllMicroservices();
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
